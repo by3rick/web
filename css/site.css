@@ -172,13 +172,14 @@ body.carlo-body::before {
 .glass-card p, .glass-card li {
   font-size: 0.95rem;
   line-height: 1.7;
-  text-align: justify;
+  text-align: center;
 }
 
 /* Títulos de secciones más legibles */
 h1, h2, h3, h4 {
   line-height: 1.3;
   margin-bottom: 0.6rem;
+  text-align: center;
 }
 /* HERO con imagen de altar */
 .hero-section {
@@ -191,4 +192,10 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+/* Navbar link activo con buen contraste */
+.navbar .nav-link.active {
+  color: #ffffff !important; /* blanco puro */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* sombra para resaltar sobre glass */
 }
