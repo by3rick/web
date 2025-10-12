@@ -9,12 +9,11 @@ class Country {
         const facts = {
             "Italy": "Italy is home to the Vatican, the heart of Catholicism.",
             "Spain": "Spain has a deep Catholic heritage and many missionaries.",
-            "Mexico": "Has the second-largest Catholic population in the world. Our Lady of Guadalupe appeared to St. Juan Diego in 1531, becoming the patroness of the Americas",
+            "Mexico": "Has the second-largest Catholic population in the world. Our Lady of Guadalupe appeared to St. Juan Diego in 1531, becoming the patroness of the Americas.",
             "Brazil": "Brazil celebrates Our Lady of Aparecida as its patroness.",
             "Argentina": "Argentina is the birthplace of Pope Francis.",
             "Poland": "Poland gave the world Pope John Paul II.",
-            "France": "Lourdes is one of the most visited pilgrimage sites due to the Marian apparitions.",
-            
+            "France": "Lourdes is one of the most visited pilgrimage sites due to the Marian apparitions."
         };
         return facts[this.name] || "This country has a rich Catholic history.";
     }
@@ -42,9 +41,7 @@ class Country {
             "El Salvador": "St. Oscar Romero",
             "Japan": "St. Maximilian Kolbe",
             "Lebanon": "St. Charbel Makhlouf",
-            "France": "St. Joan of Arc",
-            "Algeria": "St. Augustine of Hippo",
-            "United_States": "St. Elizabeth Ann Seton",
+            "Algeria": "St. Augustine of Hippo"
         };
         return saints[this.name] || "No specific saint registered.";
     }
@@ -64,7 +61,7 @@ class Country {
             "St. Charbel Makhlouf": "https://www.aciprensa.com/imagespp/sancharbelmakhlouf.jpg?w=672&h=448",
             "St. Joan of Arc": "https://www.aciprensa.com/santos/images/JuanaArco_30Mayo.jpg",
             "St. Augustine of Hippo": "https://www.aciprensa.com/imagespp/sanagustin-1724808071.jpg?w=672&h=448",
-            "St. Elizabeth Ann Seton": "https://www.aciprensa.com/santos/images/IsabelAnaBayleySeton_04Enero.jpg",
+            "St. Elizabeth Ann Seton": "https://www.aciprensa.com/santos/images/IsabelAnaBayleySeton_04Enero.jpg"
         };
         const saint = this.getSaint();
         return images[saint] || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Christian_cross.svg/1024px-Christian_cross.svg.png";
@@ -98,20 +95,30 @@ const getCountry = async (name) => {
 };
 
 const triggerAnimations = () => {
-    const elements = ['pais_name', 'pais_flag', 'pais_region', 'dato_catolico', 'santo_pais', 'santo_img'];
+    const elements = [
+        'pais_name',
+        'pais_flag',
+        'pais_region',
+        'dato_catolico',
+        'santo_pais',
+        'santo_img'
+    ];
+
     elements.forEach(id => {
         const el = document.getElementById(id);
         el.classList.remove('fade-in', 'slide-in');
-        void el.offsetWidth;
+        void el.offsetWidth; // reflow para reiniciar animación
         el.classList.add(id === 'dato_catolico' || id === 'santo_pais' ? 'slide-in' : 'fade-in');
     });
 };
 
 document.getElementById('btn_search').addEventListener('click', () => {
     const input = document.getElementById('pais_input').value.trim();
-    if (input) {
-        getCountry(input);
-    } else {
-        alert('Please enter a country name in English.');
-    }
-})
+    if (input) getCountry(input);
+    else alert('Please enter a country name in English.');
+});
+
+// También puedes permitir "Enter" para buscar
+document.getElementById('pais_input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') getCountry(e.target.value.trim());
+});

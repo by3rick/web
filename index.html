@@ -7,17 +7,78 @@
   <title>Catholic Finder</title>
   <link rel="stylesheet" href="./css/site.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Mejoras rápidas para glassmorphism y animaciones */
+    body {
+      background-color: #121212;
+      color: #f5f5f5;
+      font-family: 'Bould', sans-serif;
+    }
+
+    .navbar {
+      backdrop-filter: blur(10px);
+    }
+
+    #results {
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .slide-in {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
 
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Catholic Finder</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#carlo-acutis">Carlo Acutis</a></li>
         </ul>
@@ -25,8 +86,10 @@
     </div>
   </nav>
 
-  <div class="container mt-5 text-center">
-    <div class="row mb-4 justify-content-center">
+  <!-- Hero / Search -->
+  <div class="container mt-5 pt-5 text-center glass-card">
+    <h1 class="mb-4">Find Catholic Info by Country</h1>
+    <div class="row justify-content-center mb-4">
       <div class="col-md-6">
         <input type="text" id="pais_input" class="form-control" placeholder="Enter country name in English..." />
       </div>
@@ -35,58 +98,32 @@
       </div>
     </div>
 
-    <div id="results" class="invisible">
-      <h1 id="pais_name" class="fade-in"></h1>
-      <img id="pais_flag" class="img-fluid fade-in my-3" style="max-height: 200px;" alt="Flag" />
+    <!-- Resultados -->
+    <div id="results" class="invisible glass-card mt-4 p-4">
+      <h2 id="pais_name" class="fade-in"></h2>
+      <img id="pais_flag" class="img-fluid fade-in my-3 rounded shadow" style="max-height: 200px;" alt="Flag" />
       <p id="pais_region" class="lead fade-in"></p>
       <p id="dato_catolico" class="lead slide-in mt-3 text-info"></p>
       <p id="santo_pais" class="lead slide-in text-success"></p>
       <img id="santo_img" class="img-fluid rounded fade-in shadow mb-4" style="max-height: 200px;" alt="Saint" />
-     </div>
-     
     </div>
   </div>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
 
-  <div id="carlo-acutis" class="container mt-5">
-    <h2 class="text-center">About Blessed Carlo Acutis</h2>
+  <!-- Carlo Acutis -->
+  <div id="carlo-acutis" class="container mt-5 glass-card p-4">
+    <h2 class="text-center mb-4">About Blessed Carlo Acutis</h2>
     <p class="lead">
       Carlo Acutis (1991–2006) was an Italian Catholic teenager who used his computer skills to spread devotion to the
-      Eucharist.
-      From a young age, he showed a deep love for the Mass and the Rosary. He created a website cataloging Eucharistic
-      miracles
-      around the world. He died of leukemia at the age of 15, offering his suffering for the Church and the Pope. In
-      2020, he
-      was beatified by Pope Francis and is known today as the patron of the internet and youth.
+      Eucharist. From a young age, he showed a deep love for the Mass and the Rosary. He created a website cataloging
+      Eucharistic miracles around the world. He died of leukemia at the age of 15, offering his suffering for the Church
+      and the Pope. In 2020, he was beatified by Pope Francis and is known today as the patron of the internet and youth.
     </p>
     <div class="text-center">
-      <img src="https://www.aciprensa.com/imagespp/beatocarloacutis.jpg?w=672&h=448"
-        class="img-fluid rounded shadow mb-4" alt="Carlo Acutis" />
+      <img src="https://www.aciprensa.com/imagespp/beatocarloacutis.jpg?w=672&h=448" class="img-fluid rounded shadow mb-4" alt="Carlo Acutis" />
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <p class="mb-0">© 2025 Catholic Finder by Erick Emilio Cisneros Marsal, Durango, Dgo.</p>
   </footer>
