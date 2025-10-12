@@ -1,135 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catholic Finder — Descubre los países, santos y datos católicos del mundo.">
   <title>Catholic Finder</title>
   <link rel="stylesheet" href="./css/site.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    /* Mejoras rápidas para glassmorphism y animaciones */
-    body {
-      background-color: #121212;
-      color: #f5f5f5;
-      font-family: 'Bould', sans-serif;
-    }
-
-    .navbar {
-      backdrop-filter: blur(10px);
-    }
-
-    #results {
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s forwards;
-    }
-
-    .slide-in {
-      opacity: 0;
-      transform: translateX(-20px);
-      animation: slideIn 1s forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      transition: all 0.3s ease;
-    }
-
-    .glass-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-    }
-
-    footer {
-      backdrop-filter: blur(10px);
-    }
-  </style>
 </head>
+<body class="main-body">
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg glass-navbar fixed-top" role="navigation" aria-label="Menú principal">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Catholic Finder</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand fw-bold" href="#" aria-label="Inicio de Catholic Finder">Catholic Finder</a>
+      <button class="navbar-toggler" type="button" aria-label="Abrir menú" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#carlo-acutis">Carlo Acutis</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#" aria-current="page">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="index-carlo.html">Carlo Acutis</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero / Search -->
-  <div class="container mt-5 pt-5 text-center glass-card">
-    <h1 class="mb-4">Find Catholic Info by Country</h1>
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-6">
-        <input type="text" id="pais_input" class="form-control" placeholder="Enter country name in English..." />
+  <!-- HERO -->
+  <main class="hero-section d-flex align-items-center justify-content-center text-center" role="main">
+    <div class="hero-content">
+      <h1 class="fw-bold display-4 text-contrast">Altar de Muertos 2° Seminario</h1>
+      <p class="lead text-light">Bienvenidos, este es un apartado sobre San Carlo Acutis</p>
+      <a href="index-carlo.html" class="btn btn-hero mt-3" aria-label="Ir a la página de Carlo Acutis">Conoce a San  Carlo Acutis</a>
+    </div>
+  </main>
+
+  <!-- BUSCADOR (AHORA VUELVE AL INDEX PRINCIPAL) -->
+  <section class="container my-5" aria-label="Buscador de países">
+    <div class="glass-card p-4 mx-auto" style="max-width:900px;">
+      <h2 class="h4 text-contrast mb-3">Buscar país</h2>
+      <form class="row g-2 align-items-center" onsubmit="return false;" aria-label="Formulario de búsqueda">
+        <div class="col-sm-8">
+          <label for="pais_input" class="visually-hidden">Nombre del país en inglés</label>
+          <input id="pais_input" class="form-control" type="text" inputmode="text" autocomplete="off"
+                 placeholder="Enter country name in English (e.g. Mexico, Italy)" aria-label="Enter country name in English">
+        </div>
+        <div class="col-sm-4 d-grid">
+          <button id="btn_search" class="btn btn-hero" type="button" aria-label="Buscar país">Search</button>
+        </div>
+      </form>
+
+      <!-- Resultados (inicialmente ocultos) -->
+      <div id="results" class="invisible mt-4" aria-live="polite" aria-atomic="true">
+        <h2 id="pais_name" class="fade-in" tabindex="-1"></h2>
+
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center">
+            <img id="pais_flag" class="img-fluid fade-in my-3 rounded shadow flag" style="max-height:180px;" alt="">
+          </div>
+
+          <div class="col-md-8">
+            <p id="pais_region" class="lead fade-in" aria-hidden="false"></p>
+            <p id="dato_catolico" class="lead slide-in mt-3 text-info" aria-hidden="false"></p>
+            <p id="santo_pais" class="lead slide-in text-success" aria-hidden="false"></p>
+            <img id="santo_img" class="img-fluid rounded fade-in shadow mb-2 img-santo" style="max-height:180px;" alt="">
+          </div>
+        </div>
+        <!-- El botón para ver el altar de Carlo (si aplica) será inyectado por site.js -->
       </div>
-      <div class="col-md-2">
-        <button id="btn_search" class="btn btn-primary w-100">Search</button>
+    </div>
+  </section>
+
+  <!-- INFO CARDS (breve) -->
+  <section class="container my-4" aria-label="Sección informativa">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="glass-card p-4 text-center" tabindex="0">
+          <h2 class="h5 text-contrast">Datos Católicos</h2>
+          <p>Conoce estadísticas, diócesis, santos y patronos de cada país.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="glass-card p-4 text-center" tabindex="0">
+          <h2 class="h5 text-contrast">Fe Global</h2>
+          <p>Explora cómo la Iglesia ha crecido y su impacto cultural.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="glass-card p-4 text-center" tabindex="0">
+          <h2 class="h5 text-contrast">Inspiración</h2>
+          <p>Testimonios, santos modernos y material para jóvenes.</p>
+        </article>
       </div>
     </div>
+  </section>
 
-    <!-- Resultados -->
-    <div id="results" class="invisible glass-card mt-4 p-4">
-      <h2 id="pais_name" class="fade-in"></h2>
-      <img id="pais_flag" class="img-fluid fade-in my-3 rounded shadow" style="max-height: 200px;" alt="Flag" />
-      <p id="pais_region" class="lead fade-in"></p>
-      <p id="dato_catolico" class="lead slide-in mt-3 text-info"></p>
-      <p id="santo_pais" class="lead slide-in text-success"></p>
-      <img id="santo_img" class="img-fluid rounded fade-in shadow mb-4" style="max-height: 200px;" alt="Saint" />
-    </div>
-  </div>
-
-  <!-- Carlo Acutis -->
-  <div id="carlo-acutis" class="container mt-5 glass-card p-4">
-    <h2 class="text-center mb-4">About Blessed Carlo Acutis</h2>
-    <p class="lead">
-      Carlo Acutis (1991–2006) was an Italian Catholic teenager who used his computer skills to spread devotion to the
-      Eucharist. From a young age, he showed a deep love for the Mass and the Rosary. He created a website cataloging
-      Eucharistic miracles around the world. He died of leukemia at the age of 15, offering his suffering for the Church
-      and the Pope. In 2020, he was beatified by Pope Francis and is known today as the patron of the internet and youth.
-    </p>
-    <div class="text-center">
-      <img src="https://www.aciprensa.com/imagespp/beatocarloacutis.jpg?w=672&h=448" class="img-fluid rounded shadow mb-4" alt="Carlo Acutis" />
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-    <p class="mb-0">© 2025 Catholic Finder by Erick Emilio Cisneros Marsal, Durango, Dgo.</p>
+  <footer class="footer-glass text-center text-white py-3 mt-5" role="contentinfo">
+    <p class="mb-0">© 2025 Catholic Finder — Creado por <strong>Erick Emilio Cisneros Marsal</strong>, Durango, Dgo.</p>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/site.js"></script>
 </body>
-
 </html>

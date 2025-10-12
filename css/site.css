@@ -1,132 +1,194 @@
-/* Fuente principal y body */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --accent: #00bfff;
+  --accent-hover: #0099cc;
+  --bg-dark: #0b0b1a;
+  --bg-light: #1c1c2e;
+  --text-contrast: #ffffff;
+  --text-muted: #cfd3e1;
+  --shadow: rgba(0, 191, 255, 0.3);
+}
+
+/* RESET Y BASE */
+* {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Bould', 'Segoe UI', sans-serif;
-  background: #121212;
-  color: #f5f5f5;
   margin: 0;
   padding: 0;
-  text-align: center;
+  color: var(--text-contrast);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Navbar */
-nav {
-  background: rgba(75, 0, 130, 0.8); /* semi-transparente */
+/* FONDOS */
+body.main-body {
+  background: radial-gradient(circle at top left, var(--bg-dark), #050509);
+}
+
+body.carlo-body {
+  background: linear-gradient(135deg, #0b0b1a 0%, #20253f 100%);
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-attachment: fixed;
+  background-size: cover;
+  color: #e0e0e0;
+}
+
+/* NAVBAR */
+.glass-navbar {
+  background: rgba(20, 20, 30, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  color: var(--text-contrast) !important;
+  text-shadow: 0 0 5px var(--accent);
+}
+
+.nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* HERO */
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(120deg, rgba(0,0,0,0.85), rgba(20,20,40,0.9)),
+              url('https://source.unsplash.com/1600x900/?cathedral,cross,light') center/cover no-repeat;
+}
+
+/* TEXTO */
+.text-contrast {
+  color: #f8f8f8;
+  line-height: 1.5;
+}
+
+.text-light {
+  color: #e4e7f1;
+}
+
+.text-glow {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6),
+               0 0 20px rgba(255, 60, 80, 0.4);
+}
+
+/* BOTONES HERO */
+.btn-hero {
+  background: linear-gradient(135deg, #e63946, #4ecca3);
   color: white;
-  padding: 1em;
-  backdrop-filter: blur(10px);
-}
-
-nav h1 {
-  margin: 0;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2em;
-  padding: 0;
-  margin-top: 0.5em;
-}
-
-nav li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav li a:hover {
-  color: #ff4081;
-}
-
-/* Contenedor principal */
-.container {
-  margin: 4em auto 2em auto;
-  max-width: 700px;
-  padding: 2em;
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-}
-
-/* Input y botones */
-input[type="text"] {
-  padding: 0.7em;
-  width: 60%;
-  font-size: 1em;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-button {
-  padding: 0.7em 1.2em;
-  font-size: 1em;
-  background-color: #4b0082;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-left: 1em;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #5e2ca5;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-/* Imágenes */
-.flag, .img-santo {
-  margin-top: 1em;
-  max-height: 180px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  transition: transform 0.3s;
-}
-
-.flag:hover, .img-santo:hover {
+.btn-hero:hover {
   transform: scale(1.05);
+  filter: brightness(1.2);
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
 }
 
-/* Animaciones */
+/* CARDS */
+.glass-card {
+  background: rgba(25, 25, 30, 0.75);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.12);
+}
+
+/* IMÁGENES CON GLOW */
+.hover-glow:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  transform: scale(1.03);
+}
+
+/* ANIMACIONES */
 .fade-in {
-  animation: fadeIn 0.8s ease-in forwards;
-}
-
-.slide-in {
-  animation: slideIn 0.8s ease-in forwards;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideIn {
-  from { transform: translateX(-30px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+.animate-glow {
+  animation: glowPulse 2.5s ease-in-out infinite alternate;
 }
 
-/* Invisible por defecto */
-.invisible {
-  display: none;
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 35px rgba(255,255,255,0.35); }
+  100% { box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 }
 
-/* Footer */
-footer {
-  margin-top: 3em;
-  background: rgba(255,255,255,0.05);
-  padding: 1em;
-  color: #f5f5f5;
-  backdrop-filter: blur(10px);
+/* FOOTER */
+.footer-glass {
+  background: rgba(15, 15, 15, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ===== CARLO BODY ESPECÍFICO ===== */
+body.carlo-body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.06), transparent 70%),
+    radial-gradient(circle at 80% 85%, rgba(255, 255, 255, 0.03), transparent 70%);
+  filter: blur(25px);
+  z-index: -1;
+}
+
+/* RECOMENDACIÓN: textos largos en cards */
+.glass-card p, .glass-card li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Títulos de secciones más legibles */
+h1, h2, h3, h4 {
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+/* HERO con imagen de altar */
+.hero-section {
+  height: 100vh;
+  background: 
+    linear-gradient(120deg, rgba(0,0,0,0.6), rgba(20,20,40,0.8)), /* sombra para que el texto resalte */
+    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxhHeAuq4X4QJN2wweCSKHyzui5K3BFPNsrw&s') 
+      center/cover no-repeat; /* tu imagen de altar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
