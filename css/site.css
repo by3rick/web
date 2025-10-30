@@ -68,14 +68,6 @@ body.carlo-body {
   color: var(--accent) !important;
   text-shadow: 0 0 8px var(--accent);
 }
-
-/* HERO */
-.hero-section {
-  height: 100vh;
-  background: linear-gradient(120deg, rgba(0,0,0,0.85), rgba(20,20,40,0.9)),
-              url('https://source.unsplash.com/1600x900/?cathedral,cross,light') center/cover no-repeat;
-}
-
 /* TEXTO */
 .text-contrast {
   color: #f8f8f8;
