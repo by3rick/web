@@ -27,6 +27,7 @@ body {
 }
 
 /* FONDOS */
+/* FONDOS MEJORADOS */
 body.main-body {
   background: radial-gradient(circle at top left, #0b0b1a 0%, #060611 40%, #010106 100%);
   background-attachment: fixed;
@@ -186,7 +187,6 @@ h1, h2, h3, h4 {
   margin-bottom: 0.6rem;
   text-align: center;
 }
-/* HERO con imagen de altar mejorada */
 .hero-section {
   height: 100vh;
   background: 
