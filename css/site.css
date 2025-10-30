@@ -181,10 +181,10 @@ h1, h2, h3, h4 {
 }
 /* ===== HERO PRINCIPAL ===== */
 .hero-section {
-  height: 100vh;
+  min-height: 100vh; /* asegura que siempre ocupe al menos la pantalla completa */
   background: 
     linear-gradient(120deg, rgba(0,0,0,0.75), rgba(20,20,40,0.85)),
-    url('images/altar.jpeg') center/cover no-repeat;
+    url('./images/altar.jpeg') center/cover no-repeat; /* usar ./ según la ubicación del html */
   background-attachment: fixed;
   display: flex;
   align-items: center;
