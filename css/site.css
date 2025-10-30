@@ -179,16 +179,39 @@ h1, h2, h3, h4 {
   margin-bottom: 0.6rem;
   text-align: center;
 }
+/* ===== HERO PRINCIPAL ===== */
 .hero-section {
   height: 100vh;
   background: 
-    radial-gradient(circle at top left, #0b0b1a 0%, #060611 40%, #010106 100%),
+    linear-gradient(120deg, rgba(0,0,0,0.75), rgba(20,20,40,0.85)),
     url('images/altar.jpeg') center/cover no-repeat;
-  background-blend-mode: overlay;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: var(--text-contrast);
+}
+
+/* ===== HERO CARLO ACUTIS ===== */
+.carlo-hero {
+  height: 100vh;
+  background: 
+    linear-gradient(135deg, rgba(11,11,26,0.98), rgba(25,30,55,0.96)),
+    url('images/sancarloacutis-1760235404.webp') center/cover no-repeat;
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+/* Contenido dentro de cada hero */
+.hero-content, .carlo-hero-content {
+  max-width: 900px;
+  padding: 0 1rem;
 }
 /* Navbar link activo con buen contraste */
 .navbar .nav-link.active {
