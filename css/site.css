@@ -33,7 +33,7 @@ body.main-body {
 
 body.carlo-body {
   background: linear-gradient(135deg, #0b0b1a 0%, #20253f 100%);
-  background-image: url('images/altar.jpeg');
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
   background-attachment: fixed;
   background-size: cover;
   color: #e0e0e0;
@@ -186,7 +186,7 @@ h1, h2, h3, h4 {
   height: 100vh;
   background: 
     linear-gradient(120deg, rgba(0,0,0,0.6), rgba(20,20,40,0.8)), /* sombra para que el texto resalte */
-    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxhHeAuq4X4QJN2wweCSKHyzui5K3BFPNsrw&s') 
+    url('images/altar.jpeg') 
       center/cover no-repeat; /* tu imagen de altar */
   display: flex;
   align-items: center;
