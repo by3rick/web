@@ -28,14 +28,19 @@ body {
 
 /* FONDOS */
 body.main-body {
-  background: radial-gradient(circle at top left, var(--bg-dark), #050509);
+  background: radial-gradient(circle at top left, #0b0b1a 0%, #060611 40%, #010106 100%);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 body.carlo-body {
-  background: linear-gradient(135deg, #0b0b1a 0%, #20253f 100%);
-  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  background: 
+    linear-gradient(135deg, rgba(11,11,26,0.98) 0%, rgba(25,30,55,0.96) 100%),
+    url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-blend-mode: overlay;
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   color: #e0e0e0;
 }
 
@@ -181,13 +186,13 @@ h1, h2, h3, h4 {
   margin-bottom: 0.6rem;
   text-align: center;
 }
-/* HERO con imagen de altar */
+/* HERO con imagen de altar mejorada */
 .hero-section {
   height: 100vh;
   background: 
-    linear-gradient(120deg, rgba(0,0,0,0.6), rgba(20,20,40,0.8)), /* sombra para que el texto resalte */
-    url('images/altar.jpeg') 
-      center/cover no-repeat; /* tu imagen de altar */
+    linear-gradient(120deg, rgba(0,0,0,0.75), rgba(20,20,40,0.85)),
+    url('images/altar.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
